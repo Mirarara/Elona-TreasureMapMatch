@@ -5,11 +5,12 @@ from PIL import ImageGrab
 a = ImageGrab.grabclipboard()
 a.save('test.png','PNG')
 img = cv.imread('North_Tyris_Elona_Plus.webp',0)
+imgc = cv.imread('North_Tyris_Elona_Plus.webp')
 img2 = img.copy()
 template = cv.imread('test.png',0)
 w, h = template.shape[::-1]
 
-methods = ['cv.TM_CCOEFF']
+methods = ['cv.TM_CCOEFF_NORMED']
 for meth in methods:
 	img = img2.copy()
 	method = eval(meth)
@@ -20,7 +21,7 @@ for meth in methods:
 	top_left = max_loc
 	bottom_right = (top_left[0] + w, top_left[1] + h)
 	
-	img = cv.imread('North_Tyris_Elona_Plus.webp')
+	img = imgc.copy()
 	cv.rectangle(img,top_left, bottom_right, (0,0,255), 5)
 	plt.imshow(img[...,::-1])
 	#plt.title('Detected Point'), 
