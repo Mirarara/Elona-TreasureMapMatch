@@ -4,8 +4,12 @@ from matplotlib import pyplot as plt
 from PIL import ImageGrab
 a = ImageGrab.grabclipboard()
 a.save('test.png','PNG')
-img = cv.imread('North_Tyris_Elona_Plus.webp',0)
-imgc = cv.imread('North_Tyris_Elona_Plus.webp')
+
+# File to read for world map.
+mapname = 'North_Tyris_Elona_Plus.webp'
+
+img = cv.imread(mapname,0)
+imgc = cv.imread(mapname)
 img2 = img.copy()
 template = cv.imread('test.png',0)
 w, h = template.shape[::-1]
